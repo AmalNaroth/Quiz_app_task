@@ -1,0 +1,1 @@
+const apiEndPoints = "https://nice-lime-hippo-wear.cyclic.app/api/v1/quiz";

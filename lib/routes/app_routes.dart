@@ -9,6 +9,6 @@ class AppRoutes {
 
   static Map<String, WidgetBuilder> get routes => {
         initialScreen: StartScreen.builder,
-        homeScreen: HomeScreen.builder,
+        homeScreen: (context) => HomeScreen(),
       };
 }

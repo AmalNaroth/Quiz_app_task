@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app_artifitia/application/start_screen_bloc/start_screen_bloc.dart';
 import 'package:quiz_app_artifitia/presentation/widgets/custom_text_widget.dart';
 import 'package:quiz_app_artifitia/utils/color_constants.dart';
+import 'package:quiz_app_artifitia/utils/dependency_injection/dependency_injection.dart';
 import 'package:quiz_app_artifitia/utils/size_constants.dart';
 
 class StartScreen extends StatelessWidget {
@@ -11,7 +12,7 @@ class StartScreen extends StatelessWidget {
   static Widget builder(BuildContext context) {
     return BlocProvider<StartScreenBloc>(
       create: (context) =>
-          StartScreenBloc()..add(const StartScreenEvent.started()),
+          getIt<StartScreenBloc>()..add(const StartScreenEvent.started()),
       child: const StartScreen(),
     );
   }

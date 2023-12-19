@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:quiz_app_artifitia/application/home_screen_bloc/home_screen_bloc.dart';
+import 'package:quiz_app_artifitia/domain/hive_model/quiz_data_hive_model.dart';
 import 'package:quiz_app_artifitia/routes/app_routes.dart';
 import 'package:quiz_app_artifitia/utils/color_constants.dart';
+import 'package:quiz_app_artifitia/utils/dependency_injection/dependency_injection.dart';
 import 'package:quiz_app_artifitia/utils/navigator_service.dart';
 import 'package:quiz_app_artifitia/utils/size_constants.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configureInjection();
+  await Hive.initFlutter();
+  if (!Hive.isAdapterRegistered(QuizeDataHiveAdapter().typeId)) {
+    Hive.registerAdapter(
+      QuizeDataHiveAdapter(),
+    );
+  }
   Future.wait([
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
@@ -28,17 +40,23 @@ class MyApp extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     mHight = size.height;
     mWidth = size.width;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Quiz App',
-      navigatorKey: NavigatorService.navigatorKey,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: false,
-        scaffoldBackgroundColor: bgColor
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => HomeScreenBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Quiz App',
+        navigatorKey: NavigatorService.navigatorKey,
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: false,
+            scaffoldBackgroundColor: bgColor),
+        initialRoute: AppRoutes.initialScreen,
+        routes: AppRoutes.routes,
       ),
-      initialRoute: AppRoutes.initialScreen,
-      routes: AppRoutes.routes,
     );
   }
 }
