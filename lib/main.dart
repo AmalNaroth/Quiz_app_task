@@ -44,9 +44,8 @@ class MyApp extends StatelessWidget {
           create: (context) => getIt<HomeScreenBloc>(),
         ),
         BlocProvider(
-          create: (context) => getIt<StartScreenBloc>()..add(
-            const StartScreenEvent.started()
-          ),
+          create: (context) =>
+              getIt<StartScreenBloc>()..add(const StartScreenEvent.started()),
         )
       ],
       child: MaterialApp(
@@ -54,14 +53,15 @@ class MyApp extends StatelessWidget {
         title: 'Quiz App',
         navigatorKey: NavigatorService.navigatorKey,
         theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: false,
-            scaffoldBackgroundColor: bgColor,
-            elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: bgColor,
-              )
-            )),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: false,
+          scaffoldBackgroundColor: bgColor,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: bgColor,
+            ),
+          ),
+        ),
         initialRoute: AppRoutes.initialScreen,
         routes: AppRoutes.routes,
       ),

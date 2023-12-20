@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
+import 'package:quiz_app_artifitia/core/api_end_points.dart';
 import 'package:quiz_app_artifitia/domain/hive_data_model/quiz_model_hive.dart';
 import 'package:quiz_app_artifitia/domain/home_screen/start_screen_services.dart';
 import 'package:quiz_app_artifitia/utils/failures/main_failures.dart';
@@ -13,7 +14,7 @@ class HomeScreenRepository extends StartScreenServices {
     final Dio dio = Dio();
     try {
       Response response =
-          await dio.get('https://nice-lime-hippo-wear.cyclic.app/api/v1/quiz');
+          await dio.get(apiEndPoints);
       if (response.statusCode == 200) {
         List<dynamic> jsonList = response.data;
         List<QuizModel> quizList =

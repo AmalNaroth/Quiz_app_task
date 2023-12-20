@@ -6,13 +6,11 @@ import 'package:quiz_app_artifitia/domain/hive_data_model/quiz_model_hive.dart';
 import 'package:quiz_app_artifitia/domain/home_screen/home_screen_services.dart';
 import 'package:quiz_app_artifitia/routes/app_routes.dart';
 import 'package:quiz_app_artifitia/utils/navigator_service.dart';
+import 'package:quiz_app_artifitia/utils/utils.dart';
 
 part 'home_screen_event.dart';
 part 'home_screen_state.dart';
 part 'home_screen_bloc.freezed.dart';
-
-List<bool> currectAnsersList = [];
-int questionNumber = 0;
 
 @injectable
 class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {

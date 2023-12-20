@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app_artifitia/application/home_screen_bloc/home_screen_bloc.dart';
 import 'package:quiz_app_artifitia/application/start_screen_bloc/start_screen_bloc.dart';
 import 'package:quiz_app_artifitia/presentation/widgets/custom_text_widget.dart';
+import 'package:quiz_app_artifitia/utils/color_constants.dart';
 import 'package:quiz_app_artifitia/utils/size_constants.dart';
+import 'package:quiz_app_artifitia/utils/utils.dart';
 
 class ResultScreen extends StatelessWidget {
   const ResultScreen({super.key});
@@ -18,10 +20,9 @@ class ResultScreen extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.all(30),
-                height: mWidth! * .7,
                 width: mWidth! * .7,
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: whiteColor,
                     borderRadius: BorderRadius.circular(50)),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

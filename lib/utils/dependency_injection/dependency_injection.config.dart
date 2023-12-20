@@ -12,9 +12,9 @@ import '../../application/home_screen_bloc/home_screen_bloc.dart' as _i7;
 import '../../application/start_screen_bloc/start_screen_bloc.dart' as _i8;
 import '../../domain/home_screen/home_screen_services.dart' as _i3;
 import '../../domain/home_screen/start_screen_services.dart' as _i5;
-import '../../infrastructure/home_screen/start_screen_repository.dart' as _i6;
-import '../../infrastructure/home_screen_repository.dart'
-    as _i4; // ignore_for_file: unnecessary_lambdas
+import '../../infrastructure/home_screen/home_screen_repository.dart' as _i4;
+import '../../infrastructure/start_screen/start_screen_repository.dart'
+    as _i6; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quiz_app_artifitia/application/start_screen_bloc/start_screen_bloc.dart';
 import 'package:quiz_app_artifitia/presentation/widgets/custom_text_widget.dart';
+import 'package:quiz_app_artifitia/utils/color_constants.dart';
 
 class InternetErrorScreen extends StatelessWidget {
   const InternetErrorScreen({super.key});
@@ -17,7 +18,7 @@ class InternetErrorScreen extends StatelessWidget {
             Lottie.asset("assets/animation/Animation - 1703091659219.json"),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white
+                backgroundColor: whiteColor
               ),
               onPressed: () {
                 BlocProvider.of<StartScreenBloc>(context).add(
