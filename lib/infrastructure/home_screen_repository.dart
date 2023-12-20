@@ -10,6 +10,7 @@ class HomeScreenRepository implements HomeScreenServices {
   @override
  Future<Either<MainFailure, List<QuizModel>>> getLocalData() async {
   try {
+    await Hive.openBox('quizBox');
     var box = Hive.box('quizBox');
     List<QuizModel> quizList = [];
     for (var key in box.keys) {
@@ -20,8 +21,9 @@ class HomeScreenRepository implements HomeScreenServices {
     }
     return right(quizList); // Use `right` to indicate success
   } catch (e) {
+    print(e);
     return left(
-      MainFailure.clientFailure(),
+      const MainFailure.localFailure(),
     ); // Use `return` to return the Either value
   }
 }

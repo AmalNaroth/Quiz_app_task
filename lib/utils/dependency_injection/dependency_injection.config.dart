@@ -32,7 +32,9 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i5.StartScreenServices>(() => _i6.HomeScreenRepository());
   gh.factory<_i7.HomeScreenBloc>(
       () => _i7.HomeScreenBloc(get<_i3.HomeScreenServices>()));
-  gh.factory<_i8.StartScreenBloc>(
-      () => _i8.StartScreenBloc(get<_i5.StartScreenServices>()));
+  gh.factory<_i8.StartScreenBloc>(() => _i8.StartScreenBloc(
+        get<_i5.StartScreenServices>(),
+        get<_i3.HomeScreenServices>(),
+      ));
   return get;
 }

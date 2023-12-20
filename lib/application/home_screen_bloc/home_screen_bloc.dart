@@ -12,6 +12,7 @@ part 'home_screen_state.dart';
 part 'home_screen_bloc.freezed.dart';
 
 List<bool> currectAnsersList = [];
+int questionNumber = 0;
 
 @injectable
 class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
@@ -19,19 +20,27 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       : super(HomeScreenState.initial()) {
     on<_Started>(
       (event, emit) async {
+        currectAnsersList.clear();
+        emit(
+          state.copyWith(
+              isLoading: true, nextShow: false, index: 0, selectedIndex: null),
+        );
         final data = await instance.getLocalData();
         data.fold((l) {
-          print(l);
+          //print(l);
+          NavigatorService.pushNamedAndRemoveUntil(AppRoutes.internetError);
           emit(
             state.copyWith(isLoading: true),
           );
         }, (r) {
+          questionNumber = r.length;
           emit(
             state.copyWith(quizList: r, index: state.index),
           );
           emit(
             state.copyWith(isLoading: false),
           );
+          NavigatorService.pushNamedAndRemoveUntil(AppRoutes.homeScreen);
         });
       },
     );
@@ -51,7 +60,7 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
         emit(
           state.copyWith(selectedIndex: event.selectedIndex),
         );
-        if(event.selectedAnswer!=null && event.selectedAnswer==true){
+        if (event.selectedAnswer != null && event.selectedAnswer == true) {
           currectAnsersList.add(true);
         }
       },

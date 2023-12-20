@@ -56,7 +56,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: false,
-            scaffoldBackgroundColor: bgColor),
+            scaffoldBackgroundColor: bgColor,
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: bgColor,
+              )
+            )),
         initialRoute: AppRoutes.initialScreen,
         routes: AppRoutes.routes,
       ),

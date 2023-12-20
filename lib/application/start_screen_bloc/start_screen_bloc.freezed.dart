@@ -19,19 +19,22 @@ mixin _$StartScreenEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() startQuizButtonClick,
+    required TResult Function(BuildContext ctx) startQuizButtonClick,
+    required TResult Function() refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? startQuizButtonClick,
+    TResult? Function(BuildContext ctx)? startQuizButtonClick,
+    TResult? Function()? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? startQuizButtonClick,
+    TResult Function(BuildContext ctx)? startQuizButtonClick,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$StartScreenEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_StartQuizButtonClick value) startQuizButtonClick,
+    required TResult Function(_Refresh value) refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_StartQuizButtonClick value)? startQuizButtonClick,
+    TResult? Function(_Refresh value)? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_StartQuizButtonClick value)? startQuizButtonClick,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +119,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() startQuizButtonClick,
+    required TResult Function(BuildContext ctx) startQuizButtonClick,
+    required TResult Function() refresh,
   }) {
     return started();
   }
@@ -122,7 +129,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? startQuizButtonClick,
+    TResult? Function(BuildContext ctx)? startQuizButtonClick,
+    TResult? Function()? refresh,
   }) {
     return started?.call();
   }
@@ -131,7 +139,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? startQuizButtonClick,
+    TResult Function(BuildContext ctx)? startQuizButtonClick,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -145,6 +154,7 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_StartQuizButtonClick value) startQuizButtonClick,
+    required TResult Function(_Refresh value) refresh,
   }) {
     return started(this);
   }
@@ -154,6 +164,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_StartQuizButtonClick value)? startQuizButtonClick,
+    TResult? Function(_Refresh value)? refresh,
   }) {
     return started?.call(this);
   }
@@ -163,6 +174,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_StartQuizButtonClick value)? startQuizButtonClick,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -181,6 +193,8 @@ abstract class _$$StartQuizButtonClickImplCopyWith<$Res> {
   factory _$$StartQuizButtonClickImplCopyWith(_$StartQuizButtonClickImpl value,
           $Res Function(_$StartQuizButtonClickImpl) then) =
       __$$StartQuizButtonClickImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext ctx});
 }
 
 /// @nodoc
@@ -190,55 +204,83 @@ class __$$StartQuizButtonClickImplCopyWithImpl<$Res>
   __$$StartQuizButtonClickImplCopyWithImpl(_$StartQuizButtonClickImpl _value,
       $Res Function(_$StartQuizButtonClickImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? ctx = null,
+  }) {
+    return _then(_$StartQuizButtonClickImpl(
+      ctx: null == ctx
+          ? _value.ctx
+          : ctx // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$StartQuizButtonClickImpl implements _StartQuizButtonClick {
-  const _$StartQuizButtonClickImpl();
+  const _$StartQuizButtonClickImpl({required this.ctx});
+
+  @override
+  final BuildContext ctx;
 
   @override
   String toString() {
-    return 'StartScreenEvent.startQuizButtonClick()';
+    return 'StartScreenEvent.startQuizButtonClick(ctx: $ctx)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StartQuizButtonClickImpl);
+            other is _$StartQuizButtonClickImpl &&
+            (identical(other.ctx, ctx) || other.ctx == ctx));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, ctx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$StartQuizButtonClickImplCopyWith<_$StartQuizButtonClickImpl>
+      get copyWith =>
+          __$$StartQuizButtonClickImplCopyWithImpl<_$StartQuizButtonClickImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() startQuizButtonClick,
+    required TResult Function(BuildContext ctx) startQuizButtonClick,
+    required TResult Function() refresh,
   }) {
-    return startQuizButtonClick();
+    return startQuizButtonClick(ctx);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? startQuizButtonClick,
+    TResult? Function(BuildContext ctx)? startQuizButtonClick,
+    TResult? Function()? refresh,
   }) {
-    return startQuizButtonClick?.call();
+    return startQuizButtonClick?.call(ctx);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? startQuizButtonClick,
+    TResult Function(BuildContext ctx)? startQuizButtonClick,
+    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (startQuizButtonClick != null) {
-      return startQuizButtonClick();
+      return startQuizButtonClick(ctx);
     }
     return orElse();
   }
@@ -248,6 +290,7 @@ class _$StartQuizButtonClickImpl implements _StartQuizButtonClick {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_StartQuizButtonClick value) startQuizButtonClick,
+    required TResult Function(_Refresh value) refresh,
   }) {
     return startQuizButtonClick(this);
   }
@@ -257,6 +300,7 @@ class _$StartQuizButtonClickImpl implements _StartQuizButtonClick {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_StartQuizButtonClick value)? startQuizButtonClick,
+    TResult? Function(_Refresh value)? refresh,
   }) {
     return startQuizButtonClick?.call(this);
   }
@@ -266,6 +310,7 @@ class _$StartQuizButtonClickImpl implements _StartQuizButtonClick {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_StartQuizButtonClick value)? startQuizButtonClick,
+    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (startQuizButtonClick != null) {
@@ -276,7 +321,121 @@ class _$StartQuizButtonClickImpl implements _StartQuizButtonClick {
 }
 
 abstract class _StartQuizButtonClick implements StartScreenEvent {
-  const factory _StartQuizButtonClick() = _$StartQuizButtonClickImpl;
+  const factory _StartQuizButtonClick({required final BuildContext ctx}) =
+      _$StartQuizButtonClickImpl;
+
+  BuildContext get ctx;
+  @JsonKey(ignore: true)
+  _$$StartQuizButtonClickImplCopyWith<_$StartQuizButtonClickImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RefreshImplCopyWith<$Res> {
+  factory _$$RefreshImplCopyWith(
+          _$RefreshImpl value, $Res Function(_$RefreshImpl) then) =
+      __$$RefreshImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefreshImplCopyWithImpl<$Res>
+    extends _$StartScreenEventCopyWithImpl<$Res, _$RefreshImpl>
+    implements _$$RefreshImplCopyWith<$Res> {
+  __$$RefreshImplCopyWithImpl(
+      _$RefreshImpl _value, $Res Function(_$RefreshImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RefreshImpl implements _Refresh {
+  const _$RefreshImpl();
+
+  @override
+  String toString() {
+    return 'StartScreenEvent.refresh()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$RefreshImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(BuildContext ctx) startQuizButtonClick,
+    required TResult Function() refresh,
+  }) {
+    return refresh();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(BuildContext ctx)? startQuizButtonClick,
+    TResult? Function()? refresh,
+  }) {
+    return refresh?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(BuildContext ctx)? startQuizButtonClick,
+    TResult Function()? refresh,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_StartQuizButtonClick value) startQuizButtonClick,
+    required TResult Function(_Refresh value) refresh,
+  }) {
+    return refresh(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_StartQuizButtonClick value)? startQuizButtonClick,
+    TResult? Function(_Refresh value)? refresh,
+  }) {
+    return refresh?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_StartQuizButtonClick value)? startQuizButtonClick,
+    TResult Function(_Refresh value)? refresh,
+    required TResult orElse(),
+  }) {
+    if (refresh != null) {
+      return refresh(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Refresh implements StartScreenEvent {
+  const factory _Refresh() = _$RefreshImpl;
 }
 
 /// @nodoc

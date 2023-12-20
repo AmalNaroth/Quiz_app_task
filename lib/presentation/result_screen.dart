@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_app_artifitia/application/home_screen_bloc/home_screen_bloc.dart';
+import 'package:quiz_app_artifitia/application/start_screen_bloc/start_screen_bloc.dart';
 import 'package:quiz_app_artifitia/presentation/widgets/custom_text_widget.dart';
 import 'package:quiz_app_artifitia/utils/size_constants.dart';
 
@@ -25,18 +27,29 @@ class ResultScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset("assets/images/congrats 1.png"),
-                    CustomTextWidget(textValue: "50% Score"),
+                    Text("${((currectAnsersList.length / questionNumber) * 100).toInt()}% Score",
+                    style: TextStyle(
+                      color: ((currectAnsersList.length / questionNumber) * 100).toInt() <50 ? Colors.red : Colors.green,
+                      fontFamily: "assets/fonts/Kanit/Kanit-Medium.ttf",
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold
+                    )),
+                    fHight10,
                     CustomTextWidget(
-                        textValue: "Quiz completed successfully..!"),
+                        textValue: "Quiz completed successfully..!",
+                        textSize: 15,
+                        fontWeight: FontWeight.bold),
+                        fHight10,
                     RichText(
-                        textAlign: TextAlign.center,
-                        text: const TextSpan(children: [
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        children: [
                           TextSpan(
-                            text: "You attempt",
+                            text: "You attempt ",
                             style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
                           TextSpan(
-                              text: "10 Questions ",
+                              text: "${questionNumber} Questions ",
                               style:
                                   TextStyle(color: Colors.red, fontSize: 16)),
                           TextSpan(
@@ -44,24 +57,46 @@ class ResultScreen extends StatelessWidget {
                               style:
                                   TextStyle(color: Colors.black, fontSize: 16)),
                           TextSpan(
-                              text: "5 answer ",
+                              text: "${currectAnsersList.length} answer ",
                               style:
                                   TextStyle(color: Colors.green, fontSize: 16)),
                           TextSpan(
                               text: "is correct.",
                               style:
                                   TextStyle(color: Colors.black, fontSize: 16))
-                        ]))
+                        ],
+                      ),
+                    )
                   ],
                 ),
               ),
-              fHight20,
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  onPressed: () {
-                    print(currectAnsersList.length);
-                  },
-                  child: CustomTextWidget(textValue: "Try again..!"))
+              fHight40,
+              ((currectAnsersList.length / questionNumber) * 100).toInt() <50 ? ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.red,
+                padding: EdgeInsets.symmetric(horizontal: 30,
+                vertical: 12)),
+                onPressed: () {
+                  BlocProvider.of<HomeScreenBloc>(context).add(
+                    HomeScreenEvent.started(),
+                  );
+                  print(currectAnsersList.length);
+                },
+                child: CustomTextWidget(textValue: "Try again..!"),
+              ) : ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.green,
+                padding: EdgeInsets.symmetric(horizontal: 30,
+                vertical: 12)),
+                onPressed: () {
+                  BlocProvider.of<StartScreenBloc>(context).add(
+                    StartScreenEvent.refresh(),
+                  );
+                  print(currectAnsersList.length);
+                },
+                child: CustomTextWidget(textValue: "Back..!",
+                fontColor: Colors.white,
+                fontWeight: FontWeight.w200,
+                textSize: 18),
+              )
             ],
           ),
         ),

@@ -20,18 +20,21 @@ mixin _$MainFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function() serverFailure,
+    required TResult Function() localFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clientFailure,
     TResult? Function()? serverFailure,
+    TResult? Function()? localFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function()? serverFailure,
+    TResult Function()? localFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$MainFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_ClientFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_LocalFailure value) localFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClientFailure value)? clientFailure,
     TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_LocalFailure value)? localFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClientFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_LocalFailure value)? localFailure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +120,7 @@ class _$ClientFailureImpl implements _ClientFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function() serverFailure,
+    required TResult Function() localFailure,
   }) {
     return clientFailure();
   }
@@ -123,6 +130,7 @@ class _$ClientFailureImpl implements _ClientFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clientFailure,
     TResult? Function()? serverFailure,
+    TResult? Function()? localFailure,
   }) {
     return clientFailure?.call();
   }
@@ -132,6 +140,7 @@ class _$ClientFailureImpl implements _ClientFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function()? serverFailure,
+    TResult Function()? localFailure,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
@@ -145,6 +154,7 @@ class _$ClientFailureImpl implements _ClientFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_ClientFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_LocalFailure value) localFailure,
   }) {
     return clientFailure(this);
   }
@@ -154,6 +164,7 @@ class _$ClientFailureImpl implements _ClientFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClientFailure value)? clientFailure,
     TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_LocalFailure value)? localFailure,
   }) {
     return clientFailure?.call(this);
   }
@@ -163,6 +174,7 @@ class _$ClientFailureImpl implements _ClientFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClientFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_LocalFailure value)? localFailure,
     required TResult orElse(),
   }) {
     if (clientFailure != null) {
@@ -216,6 +228,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() clientFailure,
     required TResult Function() serverFailure,
+    required TResult Function() localFailure,
   }) {
     return serverFailure();
   }
@@ -225,6 +238,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? clientFailure,
     TResult? Function()? serverFailure,
+    TResult? Function()? localFailure,
   }) {
     return serverFailure?.call();
   }
@@ -234,6 +248,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? clientFailure,
     TResult Function()? serverFailure,
+    TResult Function()? localFailure,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -247,6 +262,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult map<TResult extends Object?>({
     required TResult Function(_ClientFailure value) clientFailure,
     required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_LocalFailure value) localFailure,
   }) {
     return serverFailure(this);
   }
@@ -256,6 +272,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ClientFailure value)? clientFailure,
     TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_LocalFailure value)? localFailure,
   }) {
     return serverFailure?.call(this);
   }
@@ -265,6 +282,7 @@ class _$ServerFailureImpl implements _ServerFailure {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ClientFailure value)? clientFailure,
     TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_LocalFailure value)? localFailure,
     required TResult orElse(),
   }) {
     if (serverFailure != null) {
@@ -276,4 +294,112 @@ class _$ServerFailureImpl implements _ServerFailure {
 
 abstract class _ServerFailure implements MainFailure {
   const factory _ServerFailure() = _$ServerFailureImpl;
+}
+
+/// @nodoc
+abstract class _$$LocalFailureImplCopyWith<$Res> {
+  factory _$$LocalFailureImplCopyWith(
+          _$LocalFailureImpl value, $Res Function(_$LocalFailureImpl) then) =
+      __$$LocalFailureImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LocalFailureImplCopyWithImpl<$Res>
+    extends _$MainFailureCopyWithImpl<$Res, _$LocalFailureImpl>
+    implements _$$LocalFailureImplCopyWith<$Res> {
+  __$$LocalFailureImplCopyWithImpl(
+      _$LocalFailureImpl _value, $Res Function(_$LocalFailureImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LocalFailureImpl implements _LocalFailure {
+  const _$LocalFailureImpl();
+
+  @override
+  String toString() {
+    return 'MainFailure.localFailure()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LocalFailureImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() clientFailure,
+    required TResult Function() serverFailure,
+    required TResult Function() localFailure,
+  }) {
+    return localFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? clientFailure,
+    TResult? Function()? serverFailure,
+    TResult? Function()? localFailure,
+  }) {
+    return localFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? clientFailure,
+    TResult Function()? serverFailure,
+    TResult Function()? localFailure,
+    required TResult orElse(),
+  }) {
+    if (localFailure != null) {
+      return localFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ClientFailure value) clientFailure,
+    required TResult Function(_ServerFailure value) serverFailure,
+    required TResult Function(_LocalFailure value) localFailure,
+  }) {
+    return localFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ClientFailure value)? clientFailure,
+    TResult? Function(_ServerFailure value)? serverFailure,
+    TResult? Function(_LocalFailure value)? localFailure,
+  }) {
+    return localFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ClientFailure value)? clientFailure,
+    TResult Function(_ServerFailure value)? serverFailure,
+    TResult Function(_LocalFailure value)? localFailure,
+    required TResult orElse(),
+  }) {
+    if (localFailure != null) {
+      return localFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LocalFailure implements MainFailure {
+  const factory _LocalFailure() = _$LocalFailureImpl;
 }
