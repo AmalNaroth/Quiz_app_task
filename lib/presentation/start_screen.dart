@@ -9,14 +9,6 @@ import 'package:quiz_app_artifitia/utils/size_constants.dart';
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);
 
-  static Widget builder(BuildContext context) {
-    return BlocProvider<StartScreenBloc>(
-      create: (context) =>
-          getIt<StartScreenBloc>()..add(const StartScreenEvent.started()),
-      child: const StartScreen(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<StartScreenBloc, StartScreenState>(

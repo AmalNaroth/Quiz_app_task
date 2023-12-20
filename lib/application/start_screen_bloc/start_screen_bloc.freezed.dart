@@ -281,37 +281,11 @@ abstract class _StartQuizButtonClick implements StartScreenEvent {
 
 /// @nodoc
 mixin _$StartScreenState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  bool get isLoading => throw _privateConstructorUsedError;
+  List<QuizModel> get quizList => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $StartScreenStateCopyWith<StartScreenState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -320,6 +294,8 @@ abstract class $StartScreenStateCopyWith<$Res> {
   factory $StartScreenStateCopyWith(
           StartScreenState value, $Res Function(StartScreenState) then) =
       _$StartScreenStateCopyWithImpl<$Res, StartScreenState>;
+  @useResult
+  $Res call({bool isLoading, List<QuizModel> quizList});
 }
 
 /// @nodoc
@@ -331,100 +307,119 @@ class _$StartScreenStateCopyWithImpl<$Res, $Val extends StartScreenState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? quizList = null,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      quizList: null == quizList
+          ? _value.quizList
+          : quizList // ignore: cast_nullable_to_non_nullable
+              as List<QuizModel>,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$StartScreenStateImplCopyWith<$Res>
+    implements $StartScreenStateCopyWith<$Res> {
+  factory _$$StartScreenStateImplCopyWith(_$StartScreenStateImpl value,
+          $Res Function(_$StartScreenStateImpl) then) =
+      __$$StartScreenStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isLoading, List<QuizModel> quizList});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$StartScreenStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$StartScreenStateImplCopyWithImpl<$Res>
+    extends _$StartScreenStateCopyWithImpl<$Res, _$StartScreenStateImpl>
+    implements _$$StartScreenStateImplCopyWith<$Res> {
+  __$$StartScreenStateImplCopyWithImpl(_$StartScreenStateImpl _value,
+      $Res Function(_$StartScreenStateImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? quizList = null,
+  }) {
+    return _then(_$StartScreenStateImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      quizList: null == quizList
+          ? _value._quizList
+          : quizList // ignore: cast_nullable_to_non_nullable
+              as List<QuizModel>,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$StartScreenStateImpl implements _StartScreenState {
+  const _$StartScreenStateImpl(
+      {required this.isLoading, required final List<QuizModel> quizList})
+      : _quizList = quizList;
+
+  @override
+  final bool isLoading;
+  final List<QuizModel> _quizList;
+  @override
+  List<QuizModel> get quizList {
+    if (_quizList is EqualUnmodifiableListView) return _quizList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_quizList);
+  }
 
   @override
   String toString() {
-    return 'StartScreenState.initial()';
+    return 'StartScreenState(isLoading: $isLoading, quizList: $quizList)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$StartScreenStateImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            const DeepCollectionEquality().equals(other._quizList, _quizList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, isLoading, const DeepCollectionEquality().hash(_quizList));
 
+  @JsonKey(ignore: true)
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
+  @pragma('vm:prefer-inline')
+  _$$StartScreenStateImplCopyWith<_$StartScreenStateImpl> get copyWith =>
+      __$$StartScreenStateImplCopyWithImpl<_$StartScreenStateImpl>(
+          this, _$identity);
 }
 
-abstract class _Initial implements StartScreenState {
-  const factory _Initial() = _$InitialImpl;
+abstract class _StartScreenState implements StartScreenState {
+  const factory _StartScreenState(
+      {required final bool isLoading,
+      required final List<QuizModel> quizList}) = _$StartScreenStateImpl;
+
+  @override
+  bool get isLoading;
+  @override
+  List<QuizModel> get quizList;
+  @override
+  @JsonKey(ignore: true)
+  _$$StartScreenStateImplCopyWith<_$StartScreenStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
