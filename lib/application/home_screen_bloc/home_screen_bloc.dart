@@ -16,6 +16,8 @@ part 'home_screen_bloc.freezed.dart';
 class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
   HomeScreenBloc(HomeScreenServices instance)
       : super(HomeScreenState.initial()) {
+        //automaticaly featchig the data
+        //first event working
     on<_Started>(
       (event, emit) async {
         currectAnsersList.clear();
@@ -43,6 +45,7 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       },
     );
 
+    // next button click esureing see the result sreen here
     on<_NextButtonClicked>((event, emit) {
       if (state.index < 4) {
         emit(
@@ -53,6 +56,7 @@ class HomeScreenBloc extends Bloc<HomeScreenEvent, HomeScreenState> {
       }
     });
 
+    // add the user result to temp list
     on<_SelectedIndex>(
       (event, emit) {
         emit(

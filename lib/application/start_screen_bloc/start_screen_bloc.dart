@@ -20,6 +20,7 @@ class StartScreenBloc extends Bloc<StartScreenEvent, StartScreenState> {
   StartScreenBloc(
       StartScreenServices startInstance, HomeScreenServices homestartInstance)
       : super(StartScreenState.initial()) {
+        //getting data in hive local databse
     on<_Started>((event, emit) async {
       final response = await startInstance.getQuizDateItems();
       response.fold(
@@ -36,6 +37,7 @@ class StartScreenBloc extends Bloc<StartScreenEvent, StartScreenState> {
       );
     });
 
+    //refreshing the internet or local databse and get data
     on<_Refresh>((event, emit) async{
       final response = await startInstance.getQuizDateItems();
       response.fold(
@@ -52,6 +54,7 @@ class StartScreenBloc extends Bloc<StartScreenEvent, StartScreenState> {
       );
     });
 
+    //calling home bloc to here
     on<_StartQuizButtonClick>(
       (event, emit) async {
         BlocProvider.of<HomeScreenBloc>(event.ctx).add(

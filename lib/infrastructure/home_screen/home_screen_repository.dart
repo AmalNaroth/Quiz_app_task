@@ -19,12 +19,12 @@ class HomeScreenRepository implements HomeScreenServices {
         quizList.add(quiz);
       }
     }
-    return right(quizList); // Use `right` to indicate success
+    return right(quizList);
   } catch (e) {
     print(e);
     return left(
       const MainFailure.localFailure(),
-    ); // Use `return` to return the Either value
+    );
   }
 }
 }
