@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:quiz_app_artifitia/application/home_screen_bloc/home_screen_bloc.dart';
-import 'package:quiz_app_artifitia/domain/hive_model/quiz_data_hive_model.dart';
+import 'package:quiz_app_artifitia/domain/store_local_database/hive_model.dart';
 import 'package:quiz_app_artifitia/routes/app_routes.dart';
 import 'package:quiz_app_artifitia/utils/color_constants.dart';
 import 'package:quiz_app_artifitia/utils/dependency_injection/dependency_injection.dart';
@@ -14,11 +14,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection();
   await Hive.initFlutter();
-  if (!Hive.isAdapterRegistered(QuizeDataHiveAdapter().typeId)) {
-    Hive.registerAdapter(
-      QuizeDataHiveAdapter(),
-    );
-  }
+  await Hive.openBox<QuizQuestion>('quizBox');
+  Hive.registerAdapter(
+    QuizQuestionAdapter(),
+  );
   Future.wait([
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
