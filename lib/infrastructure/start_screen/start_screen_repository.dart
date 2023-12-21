@@ -28,7 +28,7 @@ class HomeScreenRepository extends StartScreenServices {
         );
       }
     } catch (error) {
-      print(error);
+      //print(error);
       return left(
         const MainFailure.clientFailure(),
       );
@@ -36,6 +36,7 @@ class HomeScreenRepository extends StartScreenServices {
   }
 }
 
+// adding for hive local database
 Future<void> _saveToHive(List<QuizModel> quizList) async {
   try {
     await Hive.openBox('quizBox');
@@ -45,6 +46,8 @@ Future<void> _saveToHive(List<QuizModel> quizList) async {
       await box.put(quiz.id, quiz);
     }
   } catch (e) {
-    print(e);
+    //print(e);
   }
 }
+
+
